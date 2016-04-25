@@ -1,0 +1,10 @@
+com.puppetlabs.geppetto.pp.dsl.PP.environment.useProjectSettings=true
+com.puppetlabs.geppetto.pp.dsl.PP.saveactions.useProjectSettings=true
+com.puppetlabs.geppetto.pp.dsl.PP.searchPath.useProjectSettings=true
+eclipse.preferences.version=1
+ensureEndsWithNewLine=true
+formatOnSave=false
+puppetEnvironment=production
+puppetPath=
+replaceFunkySpaces=true
+trimLines=true

@@ -1,0 +1,2 @@
+scom::scompriv_hash: 'foo'
+scom::scomnonpriv_hash: 'foo'

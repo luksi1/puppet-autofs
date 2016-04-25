@@ -1,0 +1,15 @@
+description	"TSM Client - dsmc"
+author		"Luke Simmons"
+
+start on runlevel [12]
+stop on runlevel [06]
+expect daemon
+
+script
+	export LD_LIBRARY_PATH="/usr/local/ibm/gsk8_64/lib64:/opt/tivoli/tsm/client/api/bin64"
+	exec start-stop-daemon --background --start --make-pidfile --quiet --name dsmc --oknodo --pidfile /var/run/dsmc --startas /usr/bin/dsmc -d /var/log/tsm -- sched
+end script
+
+post-stop script
+        /bin/rm -f /var/log/dsmc.pid
+end script
