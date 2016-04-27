@@ -1,0 +1,3 @@
+<% @autofs_shares.each do |key| -%>
+<%= key["destination"] %> <%= key["options"] %> <%= key["source"] %>
+<% end -%>

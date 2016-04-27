@@ -1,12 +1,6 @@
-class autofs::install {
+class autofs::install inherits autofs {
 
-  package {"autofs-package":
+  package {$autofs_package:
     ensure => 'installed',
   }
-
-  service {"autofs-service":
-    ensure => "running",
-    require => ["autofs-package"]
-  }
-
 }

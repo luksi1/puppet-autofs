@@ -3,5 +3,5 @@
 :yaml:
   :datadir: spec/fixtures/hiera
 :hierarchy:
-  - common
-  - unix
+  - autofs
+

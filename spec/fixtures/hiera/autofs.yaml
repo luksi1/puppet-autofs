@@ -1,0 +1,7 @@
+autofs_shares:
+  - source: "my_source1"
+    destination: "my_destination1"
+    options: "my_options1"
+  - source: "my_source2"
+    destination: "my_destination2"
+    options: "my_options2"
