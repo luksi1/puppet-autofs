@@ -3,13 +3,11 @@ class autofs::config inherits autofs {
   file {"$autofs::auto_master_d": 
     ensure => 'directory',
   }
-
-  file {"${autofs::auto_master_d}/${autofs::autofs_share_name}":
-    ensure => 'file',
-    mode   => '0755',
-    owner  => 'root',
-    group  => 'root',
-    content => template("autofs/autofs.erb"),
-    notify  => $autofs::notify_services,
+  
+  file_line { 'autofs_${name}_master':
+    path    => '/etc/auto.master',
+    line    => '+dir:/etc/auto.master.d',
+    require => Package['autofs'],
+    notify  => Service['autofs'],
   }
 }
