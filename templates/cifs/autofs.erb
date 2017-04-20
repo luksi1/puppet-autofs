@@ -1,1 +1,1 @@
-<%= @source %> -fstype=cifs<% if @credentials -%>,<%= @credentials %><% end %>,uid=<%= @uid %>,gid=<%= @gid %>,file_mode=<%= @file_mode %>,dir_mode=<%= @dir_mode %>,domain=<%= @domain %>,noserverino   :<%= @destination %>
+<%= @source %> -fstype=cifs<% if @credentials -%>,credentials=<%= @credentials %><% end %>,uid=<%= @uid %>,gid=<%= @gid %>,file_mode=<%= @file_mode %>,dir_mode=<%= @dir_mode %><% if @domain -%>,domain=<%= @domain %><% end %>,noserverino   :<%= @destination %>

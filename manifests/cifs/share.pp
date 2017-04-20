@@ -17,6 +17,12 @@ define autofs::cifs::share (
 
   include ::autofs
 
+  validate_string($source)
+  validate_string($destination)
+  validate_string($domain)
+  validate_string($uid)
+  validate_string($gid)
+
   package {'cifs':
     ensure => 'latest',
     name   => $cifs_package_name,
