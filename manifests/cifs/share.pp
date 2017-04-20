@@ -15,7 +15,7 @@ define autofs::cifs::share (
 
 ){
 
-  require ::autofs
+  include ::autofs
 
   validate_string($source)
   validate_string($destination)
