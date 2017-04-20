@@ -9,8 +9,8 @@ define autofs::cifs::share (
   $username = undef,
   $password = undef,
   $timeout = 10,
-  $file_mode = 0775,
-  $dir_mode = 0775,
+  $file_mode = '0775',
+  $dir_mode = '0775',
   $cifs_package_name = 'cifs-utils'
 
 ){
@@ -28,8 +28,14 @@ define autofs::cifs::share (
     name   => $cifs_package_name,
   }
 
+  file {"/etc/auto.master.d/${name}.autofs":
+    ensure  => 'present',
+    content => "/- /etc/${name} --timeout $timeout",
+    notify  => Class['autofs::service'],
+  }
+
   file {"autofs_${_name}":
-    path    => "/etc/auto.master.d/${name}.autofs",
+    path    => "/etc/${name}",
     content => template('autofs/cifs/autofs.erb'),
     notify  => Class['autofs::service'],
     require => Package['cifs']
