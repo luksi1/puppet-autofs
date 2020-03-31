@@ -19,7 +19,6 @@ describe 'autofs::cifs::share' do
       it { is_expected.to contain_package('cifs') }
       it { is_expected.to contain_file('/etc/auto.master.d/foo.autofs') }
       it { is_expected.to contain_file('autofs_foo').with('path' => '/etc/foo') }
-
     end
   end
 end
