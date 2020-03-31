@@ -1,7 +1,7 @@
-class autofs::service inherits autofs {
-  service {$autofs_service:
-    ensure   => 'running',
-    require  => $autofs_packages,
-    provider => $service_provider,
+#
+class autofs::service {
+  service {$::autofs::autofs_service:
+    ensure  => 'running',
+    require => Package[$::autofs::autofs_package],
   }
 }

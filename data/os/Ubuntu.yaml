@@ -1,0 +1,3 @@
+autofs::auto_master_d: '/etc/auto.master.d'
+autofs::autofs_package: 'autofs'
+autofs::autofs_service: 'autofs'

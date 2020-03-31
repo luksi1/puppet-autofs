@@ -1,20 +1,16 @@
+#
 class autofs (
-  $auto_master_d    = $autofs::params::auto_master_d,
-  $autofs_package   = $autofs::params::autofs_package,
-  $require_packages = $autofs::params::require_packages,
-  $autofs_service   = $autofs::params::autofs_service,
-  $notify_services  = $autofs::params::notify_services,
-  $service_provider = $autofs::params::service_provider
-) inherits autofs::params {
+  Optional[String] $auto_master_d,
+  Optional[String] $autofs_package,
+  Optional[String] $autofs_service,
+) {
 
-  validate_absolute_path($auto_master_d)
-  validate_string($autofs_package)
-  validate_string($autofs_service)
+  contain autofs::install
+  contain autofs::config
+  contain autofs::service
 
-  anchor{'autofs::begin':} ->
-  class{'::autofs::install':} ->
-  class{'::autofs::config':} ~>
-  class{'::autofs::service':} ->
-  anchor{'::autofs::end':}
-  
+  Class['::autofs::install']
+  -> Class['::autofs::config']
+  ~> Class['::autofs::service']
+
 }
